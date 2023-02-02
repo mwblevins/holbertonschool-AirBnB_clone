@@ -6,10 +6,18 @@ from datetime import datetime
 
 class BaseModel:
     """Class defines all common attributes/methods"""
-    def __init__ (self):
-        self.id = str(uuid.uuid4())
+    def __init__ (self, *args, **kwargs):
         self.created_at = self.updated_at = datetime.now()
-
+        self.id = str(uuid.uuid4())
+        if kwargs != {}:
+            for k, v in kwargs.items():
+                if k != "__class__":
+                    setattr(self, k, v)
+        self.created_at = self.created_at if type(self.created_at) is not str else \
+            datetime.strptime(self.created_at,"%Y-%m-%dT%H:%M:%S.%f")
+        self.updated_at = self.updated_at if type(self.updated_at) is not str else \
+            datetime.strptime(self.updated_at,"%Y-%m-%dT%H:%M:%S.%f")
+                
     def __str__(self):
         """Prints"""
         return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
