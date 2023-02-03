@@ -18,7 +18,6 @@ class TestFileStorage(unittest.TestCase):
     
     def setUp(self) -> None:
         self.testObject = FileStorage()
-        FileStorage._FileStoreage__file_path = "testResults.txt"
         return super().setUp()
     
     def tearDown(self) -> None:
