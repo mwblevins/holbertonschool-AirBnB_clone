@@ -14,7 +14,7 @@ class FileStorage():
 
     def new(self, obj):
         """Add Object to __objects"""
-        key_str = "{}.{}".format(obj.__class__.__name__, obj.id or "ERROR")
+        key_str = "{}.{}".format(obj.__class__.__name__, obj.id)
         FileStorage.__objects[key_str] = obj
 
     def save(self):
@@ -24,5 +24,8 @@ class FileStorage():
 
     def reload(self):
         """Load objects from __file_path"""
-        with open(FileStorage.__file_path, "r") as fileobj:
-            FileStorage.__objects = json.load(fileobj)
+        try:
+            with open(FileStorage.__file_path, "r") as fileobj:
+                FileStorage.__objects = json.load(fileobj)
+        except FileNotFoundError:
+            pass
