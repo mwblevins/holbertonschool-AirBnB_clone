@@ -15,3 +15,4 @@ my_model.my_number = 89
 my_model.save()
 print(my_model)
 print(my_model.__dict__)
+print(my_model.to_dict())

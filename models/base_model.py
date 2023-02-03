@@ -2,7 +2,7 @@
 """Base Model for Airbnb Clone - The Console"""
 import uuid
 from datetime import datetime
-from models import storage
+import models
 
 
 class BaseModel:
@@ -15,7 +15,7 @@ class BaseModel:
                 if k != "__class__":
                     setattr(self, k, v)
         else:
-            storage.new(self)
+            models.storage.new(self)
         self.created_at = self.created_at \
             if type(self.created_at) is not str else\
             datetime.strptime(self.created_at, "%Y-%m-%dT%H:%M:%S.%f")
@@ -31,7 +31,7 @@ class BaseModel:
     def save(self):
         """Updates to current time"""
         self.updated_at = datetime.now()
-        storage.save()
+        models.storage.save()
 
     def to_dict(self):
         """Dictionary of key/values"""
