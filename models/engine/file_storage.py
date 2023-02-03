@@ -18,6 +18,10 @@ class FileStorage():
         key_str = "{}.{}".format(obj.__class__.__name__, obj.id)
         FileStorage.__objects[key_str] = obj
 
+    def remove(self, key_val):
+        if FileStorage.__objects.get(key_val) is not None:
+            del FileStorage.__objects[key_val]
+
     def save(self):
         """Save __objects to __file_path"""
         with open(FileStorage.__file_path, "w", encoding="utf-8") as objFile:
