@@ -3,6 +3,7 @@
 import json
 from models.base_model import BaseModel
 
+
 class FileStorage():
 
     __file_path = "file.json"
@@ -26,11 +27,11 @@ class FileStorage():
     def reload(self):
         """Load objects from __file_path"""
         try:
-            with open(FileStorage.__file_path, "r", encoding="utf-8") as fileobj:
+            with open(FileStorage.__file_path, "r", encoding="utf-8")\
+                       as fileobj:
                 temp = json.load(fileobj)
                 for k, v in temp.items():
                     restoredObject = eval(v['__class__'])(**v)
                     FileStorage.__objects[k] = restoredObject
-                    
         except FileNotFoundError:
             pass
