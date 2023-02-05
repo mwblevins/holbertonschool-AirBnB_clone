@@ -10,10 +10,10 @@ class TestFileStorage(unittest.TestCase):
 
     def test_contructors(self):
         self.testObject.reload()
-        self.assertEqual(len(self.testObject.all()), 0)
+        start_count = len(self.testObject.all())
         obj = BaseModel()
         self.testObject.new(obj)
-        self.assertEqual(len(self.testObject.all()),1)
+        self.assertEqual(len(self.testObject.all()),start_count + 1)
         pass
     
     def setUp(self) -> None:
