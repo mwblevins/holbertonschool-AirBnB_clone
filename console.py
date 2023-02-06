@@ -109,17 +109,7 @@ class HBNBCommand(cmd.Cmd):
             return
         setattr(target, args[2], eval(args[3]))
             
-        
-             
-        
-        
-    
-        
-            
-        
-            
-                
-        
+         
 
 
 if __name__ == '__main__':
