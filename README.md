@@ -42,6 +42,12 @@ For greater detail run `(hbnb) help <command>`
     (hbnb) help help
     List available commands with "help" or detailed help with "help cmd".
     (hbnb)
+## Python Version
+Project was built and tested on Python 3.4.3
+for Holberton Tulsa, Cohort 19. 
+
+Febuary 2023.
+
 
 ## Authors and Contributors
 Philip Taylor <philip.dan.taylor@gmail.com>
