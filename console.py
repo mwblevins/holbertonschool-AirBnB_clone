@@ -125,10 +125,10 @@ class HBNBCommand(cmd.Cmd):
     def get_arg(line):
         num = None
         try:
-            num = float(line)                       #if flaot fails num will be None
+            num = float(line)               # if flaot fails num will be None
             res = int(line)
         except ValueError:
-                res = num or str(line)              #if int failed, num won't be None,
+                res = num or str(line)      # if int failed, num won't be None,
         if type(res) is str:
             if '"' in res[:1] and '"' in res[1:]:
                 res = res[1:res[1:].find('"')+1]    # Get String between quotes
