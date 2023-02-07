@@ -118,9 +118,20 @@ class HBNBCommand(cmd.Cmd):
         if args[2] in HBNBCommand.blackList:
             return
         try:
-            setattr(target, args[2], eval(args[3]))
+            setattr(target, args[2], HBNBCommand.get_arg(args[3]))
         except Exception as e:
             print(e)
+
+    def get_arg( line):
+        num = None
+        try:
+            num = float(line)
+            res = int(line)
+        except ValueError:
+                res = num or str(line)
+        if type(res) is str and '"' in res[:1] and '"' in res[1:]:
+            res = res[1:res[1:].find('"')+1]
+        return res
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
