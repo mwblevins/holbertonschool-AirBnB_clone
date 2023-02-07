@@ -122,15 +122,18 @@ class HBNBCommand(cmd.Cmd):
         except Exception as e:
             print(e)
 
-    def get_arg( line):
+    def get_arg(line):
         num = None
         try:
             num = float(line)
             res = int(line)
         except ValueError:
                 res = num or str(line)
-        if type(res) is str and '"' in res[:1] and '"' in res[1:]:
-            res = res[1:res[1:].find('"')+1]
+        if type(res) is str:
+            if '"' in res[:1] and '"' in res[1:]:
+                res = res[1:res[1:].find('"')+1]
+            elif " " in res:
+                res = res[:res.find(' ')]
         return res
 
 if __name__ == '__main__':
