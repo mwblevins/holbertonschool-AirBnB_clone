@@ -15,25 +15,39 @@ The goals/functionality/restrictions of this project were as follows:
 - Handle a named argument in a function
 
 ## <center>Functionality
-"describe here followed by an example"
+<h4>Opening the Console</h4> 
 
-    ./hsh
-    ($) cat "file"
-    [prints contents of "file" to stdout]
-    ($) exit
-    
+    ./console.py
+    (hbnb) 
 
-"more examples"
+or
 
-Both
+    python3 -m console
+    (hbnb)
 
-    cat "file" | ./hsh
+For a list of Avaible Commands see the Console help menu:
 
-and
+    python3 -m console
+    (hbnb) help
 
-   `./hsh cat "file"` 
+    Documented commands (type help <topic>):
+    ========================================
+    EOF  all  create  destroy  help  quit  show  update
 
-"closing remarks"
+    (hbnb)
+
+For greater detail run `(hbnb) help <command>`
+
+    python3 -m console
+    (hbnb) help help
+    List available commands with "help" or detailed help with "help cmd".
+    (hbnb)
+## Python Version
+Project was built and tested on Python 3.4.3
+for Holberton Tulsa, Cohort 19. 
+
+Febuary 2023.
+
 
 ## Authors and Contributors
 Philip Taylor <philip.dan.taylor@gmail.com>
