@@ -5,6 +5,7 @@ import os
 import json
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
+from models import storage
 
 
 class TestFileStorage(unittest.TestCase):
@@ -24,18 +25,17 @@ class TestFileStorage(unittest.TestCase):
         if self.NeedCleanup:
             if os.path.exists("file.json"):
                 os.remove("file.json")
-            os.rename("temp.json","file.json")
+            os.rename("temp.json", "file.json")
         return super().tearDown()
 
     def setUp(self):
         """initialize objects and file storage instance"""
         if os.path.exists("file.json"):
-            os.rename("file.json","temp.json")
+            os.rename("file.json", "temp.json")
             self.NeedCleanup = True
         self.obj1 = BaseModel(**{"id": 1, "name": "Test1"})
         self.obj2 = BaseModel(**{"id": 2, "name": "Test2"})
         self.file_storage_tester = FileStorage()
-        
 
     def test_all(self):
         """Test if all method retrieves objects correctly"""
@@ -47,7 +47,7 @@ class TestFileStorage(unittest.TestCase):
     def test_new(self):
         """Test if new method adds object to __objects correctly"""
         self.file_storage_tester.new(self.obj1)
-        self.assertIn(self.obj1,self.file_storage_tester.all().values())
+        self.assertIn(self.obj1, self.file_storage_tester.all().values())
 
     def test_remove_method(self):
         """Tests if the remove method deletes an object from the dict"""
@@ -69,3 +69,7 @@ class TestFileStorage(unittest.TestCase):
         """Tests if the save method creates a file with the objects data"""
         self.file_storage_tester.save()
         self.assertTrue(os.path.exists("file.json"))
+
+    def test_all_method(self):
+        """Tests if the all method returns a dict"""
+        self.assertIsInstance(storage.all(), dict)
