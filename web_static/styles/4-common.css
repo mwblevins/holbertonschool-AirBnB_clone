@@ -1,0 +1,29 @@
+body
+{
+	margin: 0;
+	padding: 0;
+	color: #484848;
+	font-size: 14px;
+	font-family: Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.container
+{
+	max-width: 1000px;
+	margin: 30px auto;
+}
+
+section
+{
+	display: block;
+}
+
+button
+{
+	font-size: 18px;
+}
+
+button:hover
+{
+	opacity: 0.9;
+}
